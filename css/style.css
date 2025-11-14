@@ -1022,15 +1022,20 @@ textarea::placeholder {
 }
 
 .end {
+  background-image: url('https://yenstudio.info.vn/huong-anh/181A9644.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
-  height: auto;
+  aspect-ratio:412 / 686;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--primary-color);
-  padding-top: 90px;
+  color: #fff;
+  padding-top: 17%;
+  position: relative;
 }
 
 .img-qr {
@@ -1042,13 +1047,13 @@ textarea::placeholder {
   font-family: var(--font-pinyon);
   font-size: 35px;
   margin-bottom: -40px;
+  color: #fff;
 }
 
 .lb-end {
   font-family: var(--font-lora);
   font-size: 0.6em;
   letter-spacing: 1px;
-  font-family: var(--font-lora);
   line-height: 20px;
   padding-top: 46px;
   width: 88%;
@@ -1058,8 +1063,8 @@ textarea::placeholder {
 .yen {
   font-family: var(--font-lora);
   font-size: 0.6em;
-  padding-bottom: 10px;
-  padding-top: 100px;
+  position: absolute;
+  bottom: 1%;
 }
 
 /* invitation-card */

@@ -462,7 +462,7 @@
 
 .lb-add {
   font-family: var(--font-pinyon);
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .add2 {
@@ -1269,6 +1269,9 @@ textarea::placeholder {
   }
   .in-fe {
     font-size: 0.5em;
+  }
+  .lb-add {
+    font-size: 25px;
   }
   .lb-line1,
   .lb-name {

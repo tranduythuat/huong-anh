@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Lora";
-  src: url("Lora-Regular.woff2") format("woff2"),
-    url("Lora-Regular.woff") format("woff");
+  src: url("../fonts/Lora-Regular.woff2") format("woff2"),
+    url("../fonts/Lora-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,8 +9,8 @@
 
 @font-face {
   font-family: "Lora Regular";
-  src: url("Lora-Regular.woff2") format("woff2"),
-    url("Lora-Regular.woff") format("woff");
+  src: url("../fonts/Lora-Regular.woff2") format("woff2"),
+    url("../fonts/Lora-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -434,7 +434,7 @@
 }
 
 .box-map {
-  width: 70%;
+  width: 75%;
 }
 
 .inv label.lb-inv {
@@ -745,6 +745,32 @@
   width: 30%;
   margin: 50px 0 20px;
 }
+
+.btn-next {
+  top: 45%;
+  right: 2%;
+}
+
+.btn-prev {
+  top: 45%;
+  left: 2%;
+}
+
+.btn {
+  position: absolute;
+  max-width: 40px;
+  width: 100%;
+  aspect-ratio: 40 / 40;
+  padding: 1%;
+  border: none;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  background-color: #fff;
+  font-size: 18px;
+  color: #111;
+}
+
 
 /* ====FORM+============== */
 
@@ -1264,6 +1290,33 @@ textarea::placeholder {
   padding-bottom: 50px;
 }
 
+/* music */
+.player {
+  position: fixed;
+  bottom: 1%;
+  right: 1%;
+  max-width: 50px;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 9999;
+  border: 1px solid var(--text-title-color);
+}
+
+.player #iconSvg {
+  width: 100%;
+  height: 100%;
+  fill: var(--text-title-color);
+}
+
+.spin {
+  animation: spin 4s linear infinite;
+}
+
 /* ================================ */
 
 @media (max-width: 480px) {
@@ -1334,6 +1387,11 @@ textarea::placeholder {
     max-width: calc((14 / 480) * 100vw);
   }
 
+  .btn {
+    max-width: calc((40 / 480) * 100vw);
+    font-size: calc((18 / 480) * 100vw);
+  }
+
   .lb-form1 {
     font-size: calc((40 / 480) * 100vw);
   }
@@ -1353,5 +1411,9 @@ textarea::placeholder {
   }
   .lb-thank  {
     font-size: calc((35 / 480) * 100vw);
+  }
+
+  .player {
+    max-width: calc((50 / 480) * 100vw);
   }
 }

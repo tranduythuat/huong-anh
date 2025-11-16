@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="box-map">
-                        <label for="" class="add2">Số 198 Lam Sơn, phường Vĩnh Yên, Tỉnh Phú Thọ</label>
+                        <label for="" class="add2">Số 198 Lam Sơn, phường Vĩnh Yên, Tỉnh Phú Thọ (tỉnh Vĩnh Phúc cũ)</label>
                         <!-- <label for="" class="add2">/No. 21/4, Khu Pho Trung, Binh Hoa Ward, Ho Chi Minh City, Vietnam/</label> -->
                         <a href="https://maps.app.goo.gl/W9y2p6S2ogs1FMBv7" class="maps">XEM BẢN ĐỒ</a>
                     </div>
@@ -234,6 +234,8 @@
                     <div class="slide">
                         <img src="https://yenstudio.info.vn/huong-anh/181A9693.jpg" alt="">
                     </div>
+                    <button class="btn btn-next"><i class="fa-solid fa-caret-right"></i></button>
+                    <button class="btn btn-prev"><i class="fa-solid fa-caret-left"></i></button>
                 </div>
                 <div class="dots"></div>
             </div>
@@ -352,13 +354,13 @@
                 <label for="" class="yen">YÊN STUDIO | YÊN BỀ GIA THẤT</label>
             </div>
         </div>
+        <button class="player" id="player-btn" aria-label="Play/Pause">
+            <img id="iconSvg" src="anh/cd.png" alt="Music Icon">
+        </button>
+          <audio id="audio" preload="auto"
+              src="audio/Christina Perri - A Thousand Years [NZGHXy1IAHM].mp3" loop
+              type="audio/mpeg"></audio>
     </div>
-    </div>
-
-
-
-
-
     <script>
         window.onload = function () {
             // Lấy tất cả các phần tử cho các hiệu ứng fade-down, fade-up, fade-right, fade-left, zoom-in
@@ -490,6 +492,16 @@
         });
 
         const dots = document.querySelectorAll('.dot');
+        const nextSlideBtn = document.querySelector(".btn-next");
+        const prevSlideBtn = document.querySelector(".btn-prev");
+
+        nextSlideBtn.addEventListener("click", () => {
+            nextSlide();
+        })
+
+        prevSlideBtn.addEventListener("click", () => {
+            prevSlide();
+        })
 
         function showSlide(index) {
             slides.forEach(s => s.style.display = 'none');
@@ -510,62 +522,49 @@
             showSlide(currentIndex);
         }
 
+        function prevSlide() {
+            if (currentIndex === 0) {
+                currentIndex = slides.length - 1;
+            } else {
+                currentIndex--;
+            }
+            showSlide(currentIndex);
+        }
+
         function startSlideShow() {
             slideInterval = setInterval(nextSlide, 5000); // 5 giây đổi ảnh
         }
 
         // hiển thị slide đầu tiên
         showSlide(currentIndex);
-        startSlideShow();
+        // startSlideShow();
 
     </script>
     <script>
-        const musicCircle = document.getElementById("musicCircle");
-        const audio = document.getElementById("audio");
-        const videoIframe = document.getElementById("video");
-
-        // Thêm sự kiện khi nhấn vào vòng tròn
-        // musicCircle.addEventListener("click", toggleMusic);
-
-        // Hàm điều khiển việc phát hoặc tạm dừng nhạc
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play(); // Phát nhạc
-                musicCircle.classList.add("spin"); // Bắt đầu xoay
-            } else {
-                audio.pause(); // Dừng nhạc
-                musicCircle.classList.remove("spin"); // Dừng xoay
+        async function toggleMusic(e) {
+            const audio = document.getElementById('audio');
+            const iconSvg = document.getElementById('iconSvg');
+            if (!audio.src) {
+                alert('Chưa có nhạc, vui lòng thêm src cho audio.');
+                return;
             }
-        }
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
 
-        // Tạo đối tượng YouTube Player API
-        let player;
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('video', {
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
+            audio.addEventListener('play', () => {
+                iconSvg.classList.add('spin');
+            });
+            audio.addEventListener('pause', () => {
+                iconSvg.classList.remove('spin');
             });
         }
 
-        // Lắng nghe sự kiện trạng thái của video
-        function onPlayerStateChange(event) {
-            // Khi video bắt đầu phát (state = 1), dừng nhạc và dừng xoay vòng tròn
-            if (event.data === YT.PlayerState.PLAYING) {
-                if (!audio.paused) {
-                    audio.pause(); // Dừng nhạc
-                    musicCircle.classList.remove("spin"); // Dừng xoay vòng tròn
-                }
-            }
-        }
 
-        // Tải API YouTube
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+        const btn = document.getElementById('player-btn');
+        btn.addEventListener('click', toggleMusic);
     </script>
     <!-- <script>
         const qrcode = document.getElementById('qr-btn');

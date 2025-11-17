@@ -886,8 +886,22 @@ form .logo {
   font-weight: 300;
   text-transform: uppercase;
 }
+.attend-check {
+  padding: 0 2%;
+}
+.attend-check .check-box {
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid var(--primary-color);
+  padding: 1.5% 2%;
+  margin: 2% 2%;
+  border-radius: 20px;
+  font-style: normal;
+  background-color: #fff;
+}
 
-.check-box {
+.movement-check .check-box {
   width: 50%;
   text-align: center;
   display: inline-block;
@@ -1366,8 +1380,12 @@ textarea::placeholder {
     font-size: calc((12.4 / 480) * 100vw);
   }
 
-  .lb-time, .add2, .maps, .lb-color, .til-check, .lb-text, .xacnhan{
+  .lb-time, .add2, .maps, .lb-color, .lb-text, .xacnhan{
     font-size: calc((13.2 / 480) * 100vw);
+  }
+
+  .til-check {
+    font-size: calc((11.2 / 480) * 100vw);
   }
 
   .lb-timeline {
